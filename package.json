@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress open",
-    "report": "npx cypress run --reporter mochawesome"
+    "report": "npx cypress run --reporter mochawesome",
+    "schedule": "node schedule.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.6.3",
+    "cron": "^3.1.6",
+    "cypress": "^13.7.2",
     "cypress-mochawesome-reporter": "^3.8.0",
     "cypress-xpath": "^2.0.1",
     "mochawesome": "^7.1.3"
