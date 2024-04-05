@@ -3,10 +3,8 @@ describe('Validação de URLs', () => {
   const urls = Cypress.env('urls');
 
   urls.forEach((url) => {
-
     it(`Ambiente: ${url}`, () => {
-      cy.visit(url);
-
+      cy.visit(url, { timeout: 30000 });
       // Validações da tela
       cy.get('body').should('exist'); // Verifica se o body html foi carregado
       cy.get('[data-testid="login.username"]').should('be.visible'); // Input de login
@@ -14,6 +12,8 @@ describe('Validação de URLs', () => {
       cy.xpath('//button[contains(., "Entrar")]').should('be.visible'); // Button 'Entrar'
       cy.xpath('//a[contains(., "Comece por aqui")]').should('be.visible'); // Button 'Comece por aqui'
       cy.xpath('//a[contains(., "Esqueci minha senha")]').should('be.visible'); // Link 'Esqueci minha senha'
+      cy.clearCookies() // Limpa os cookies
+      cy.clearLocalStorage() // Limpa o armazenamento local (cache)
     });
   });
 });
